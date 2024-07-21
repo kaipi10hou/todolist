@@ -1,8 +1,12 @@
 import './TodoItem.css'
 
-function TodoItem({id, isDone, content, date, onUpdate}) {
+function TodoItem({id, isDone, content, date, onUpdate, onDelete}) {
     const onChangeCheckBox = () => {
         onUpdate(id)
+    }
+
+    const onClickDeleteButton = () => {
+        onDelete(id)
     }
 
     return (
@@ -10,7 +14,7 @@ function TodoItem({id, isDone, content, date, onUpdate}) {
             <input onChange={onChangeCheckBox} type="checkbox" checked={isDone} readOnly/>
             <div className={'content'}>{content}</div>
             <div className={'date'}>{new Date(date).toDateString()}</div>
-            <button>삭제</button>
+            <button onClick={onClickDeleteButton}>삭제</button>
         </div>
     )
 }
